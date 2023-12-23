@@ -1,4 +1,4 @@
-.element{
+.element {
     border: 1px solid black;
     width: 10em;
     height: 10em;
@@ -7,8 +7,25 @@
 .element_header {
     display: flex;
     justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .element_body {
     text-align: center;
+    position: relative;
+}
+
+.element_body>h1 {
+    font-size: 5em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    font-size: 5em;
+}
+
+.element_body>h2 {
+    transform: translateY(200%);
 }

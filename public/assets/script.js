@@ -17,7 +17,7 @@ function renderElements(element_data) {
         const element_name = document.createElement('h2');
 
         element_number.innerText = `${element_data[i].number}`
-        element_mass.innerText = element_data[i].atomic_mass;
+        element_mass.innerText = `${element_data[i].atomic_mass}`;
         element_symbol.innerText = element_data[i].symbol;
         element_name.innerText = element_data[i].name;
 
