@@ -1,0 +1,14 @@
+.element{
+    border: 1px solid black;
+    width: 10em;
+    height: 10em;
+}
+
+.element_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.element_body {
+    text-align: center;
+}
