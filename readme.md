@@ -1,2 +1,2 @@
 # PERIODIC TABLE OF THE ELEMENTS
-What started as a script to parse a JSON file of periodic table data into an SQL database to create a desktop application with inevitably morphed into an ill-fated attempt to create a periodic table web application with a sleek, reflexive user interface even though I despise writing CSS and simultaniusly refuse to figure out a framework. Tern up!!
+What started as a script to parse a JSON file of periodic table data into an SQL database to create a desktop application with inevitably morphed into an ill-fated attempt to create a periodic table web application with a sleek, reflexive user interface even though I despise writing CSS and am also too stubborn to use a framework. Tern up!!
