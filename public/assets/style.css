@@ -1,26 +1,32 @@
 #main {
     display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 #secondary {
-    margin-top: 5em;
-    margin-left: 10em;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
 }
 
 .row {
     display: flex;
+    justify-content: flex-end;
 }
 
 .down_one {
-    margin-top: 5.1em;
+    margin-top: 5.2em;
 }
 
 .down_three {
-    margin-top: 15.4em;
+    margin-top: 15.7em;
 }
 
 .element {
     border: 1px solid black;
+    margin: 2px;
+
     width: 5em;
     height: 5em;
 }
@@ -50,4 +56,44 @@
 .element_body>h2 {
     font-size: .75em;
     transform: translateY(175%);
+}
+
+.light_blue{
+    background-color: rgb(138, 205, 228)
+}
+
+.light_red {
+    background-color: rgb(243, 136, 136)
+}
+
+.off_white {
+    background-color: rgb(208, 205, 205);
+}
+
+.light_purple {
+    background-color: rgb(209, 183, 209);
+}
+
+.lighter_purple {
+    background-color: rgb(255, 233, 255)
+}
+
+.light_yellow {
+    background-color: rgb(240, 240, 170)
+}
+
+.light_green {
+    background-color: rgb(100, 202, 100)
+}
+
+.darker_blue {
+    background-color: rgb(124, 124, 247)
+}
+
+.lighter_green {
+    background-color: rgb(178, 252, 178);
+}
+
+.light_orange {
+    background-color: rgb(236, 192, 110);
 }
