@@ -1,3 +1,24 @@
+#main {
+    display: flex;
+}
+
+#secondary {
+    margin-top: 5em;
+    margin-left: 10em;
+}
+
+.row {
+    display: flex;
+}
+
+.down_one {
+    margin-top: 5.1em;
+}
+
+.down_three {
+    margin-top: 15.4em;
+}
+
 .element {
     border: 1px solid black;
     width: 5em;
