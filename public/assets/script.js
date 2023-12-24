@@ -1,3 +1,4 @@
+const main_element = document.getElementById('main')
 function handleExpandedView(e){
     console.log(e.target)
 }
@@ -13,7 +14,7 @@ function renderTable(element_data) {
         const card_header = document.createElement('div');
         const card_body = document.createElement('div');
 
-        card_main.classList.add('element');
+        card_main.classList.add('element_main');
         card_header.classList.add('element_header');
         card_body.classList.add('element_body');
 
