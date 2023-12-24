@@ -1,10 +1,17 @@
 main {
     display: flex;
     /* justify-content: space-between; */
+    width: 100%;
 }
 
 .column {
-    width: 5.5%;
+    display: inline-block;
+    width: 100%;
+    min-width: 5px;
+}
+
+.element_main {
+
 }
 
 .light_blue{
