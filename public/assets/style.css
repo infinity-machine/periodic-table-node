@@ -1,6 +1,10 @@
+/* body {
+    width: 90%;
+    height: 90%;
+} */
+
 #main {
     display: flex;
-    width: 100%;
     justify-content: space-around;
 }
 
@@ -10,25 +14,29 @@
     margin-top: 2em;
 }
 
+.column {
+    width: 5%;
+}
+
 .row {
     display: flex;
     justify-content: flex-end;
 }
 
-.down_one {
+/* .down_one {
     margin-top: 5.2em;
 }
 
 .down_three {
     margin-top: 15.7em;
-}
+} */
 
 .element {
     border: 1px solid black;
     margin: 2px;
-
-    width: 5em;
-    height: 5em;
+    width: 100%;
+    min-width: 100px;
+    padding-top: 100%;
 }
 
 .element_header {
