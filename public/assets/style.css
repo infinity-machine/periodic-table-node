@@ -1,9 +1,10 @@
 main {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
 }
 
 .column {
-    width: 5.2%;
+    width: 100%;
     max-width: 5em;
     margin-right: .2em;
 }

@@ -1,4 +1,13 @@
-const main_element = document.getElementById('main')
+const main_element = document.getElementById('main');
+
+function appendDummyCards(element, quantity) {
+    for(let i = 0; i < quantity; i++){
+        const dummy_card = document.createElement('div');
+        dummy_card.classList.add('element_main');
+        element.appendChild(dummy_card)
+    }
+}
+
 function handleExpandedView(e){
     console.log(e.target)
 }
@@ -50,7 +59,7 @@ function renderTable(element_data) {
         else {
             const doc_group_to_append = document.getElementById(`group_${current_element.pt_group}`);
 
-            if (current_element.pt_group === 2) doc_group_to_append.classList.add('down_one');
+            if (current_element.number === 4) appendDummyCards(doc_group_to_append, 1)
             if (current_element.pt_group >= 13 && current_element.pt_group <= 17) doc_group_to_append.classList.add('down_one');
             if (current_element.pt_group >= 3 && current_element.pt_group <= 12) doc_group_to_append.classList.add('down_three');
 
