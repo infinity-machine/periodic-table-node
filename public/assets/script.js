@@ -4,13 +4,13 @@ function appendDummyCards(element, quantity) {
     for (let i = 0; i < quantity; i++) {
         const dummy_card = document.createElement('div');
         dummy_card.classList.add('dummy_card');
-        element.appendChild(dummy_card)
-    }
-}
+        element.appendChild(dummy_card);
+    };
+};
 
 function handleExpandedView(e) {
-    console.log(e.target)
-}
+    console.log(e.target);
+};
 
 function renderTable(element_data) {
     for (let i = 0; i < element_data.length; i++) {
@@ -52,11 +52,12 @@ function renderTable(element_data) {
         if(
             current_element.number === 4
             || (current_element.number >= 5 && current_element.number <= 9)
-        ) appendDummyCards(doc_group_to_append, 1)
+        ) appendDummyCards(doc_group_to_append, 1);
 
-        if(current_element.number === 21) appendDummyCards(doc_group_to_append, 3)
-
-        if(current_element.number >= 22 && current_element.number <= 30) appendDummyCards(doc_group_to_append, 4)
+        if(
+            current_element.number === 21
+            || current_element.number >= 22 && current_element.number <= 30
+        ) appendDummyCards(doc_group_to_append, 3);
 
         doc_group_to_append.appendChild(card_main);
 
