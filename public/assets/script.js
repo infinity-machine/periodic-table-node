@@ -49,30 +49,41 @@ function renderTable(element_data) {
 
         // HANDLES PLACEMENT OF ELEMENTS ON PERIODIC TABLE
         let doc_group_to_append = document.getElementById(`group_${current_element.pt_group}`);
-        if(
+
+        if (
             current_element.number === 4
             || (current_element.number >= 5 && current_element.number <= 9)
         ) appendDummyCards(doc_group_to_append, 1);
 
-        if(
+        if (
             current_element.number === 21
-            || current_element.number >= 22 && current_element.number <= 30
+            || (current_element.number >= 22 && current_element.number <= 30)
         ) appendDummyCards(doc_group_to_append, 3);
-        
-        if(
-            current_element.number < 57
-            || (current_element.number > 71 && current_element.number < 89)
-            || current_element.number > 103
-         ) doc_group_to_append.appendChild(card_main); 
 
-        // if(
-        //     current_element.number >= 57 && current_element.number <= 71
-        //     // || (current_element.number >= 89 && current_element.number <= 103)
-        // ){
-        //     doc_group_to_append = document.getElementById(`group_${current_element.number - 53}`)
-        //     console.log(`${current_element.name}: ${doc_group_to_append.id}`)
-        //     doc_group_to_append.appendChild(card_main)
-        // }
+        if (
+            current_element.number < 57
+        ) doc_group_to_append.appendChild(card_main);
+
+        if (
+            (current_element.number >= 57 && current_element.number <= 71)
+        ) {
+            doc_group_to_append = document.getElementById(`group_${current_element.number - 53}`);
+            card_main.classList.add('margin-top');
+            doc_group_to_append.appendChild(card_main);
+        };
+
+        if (
+            (current_element.number > 71 && current_element.number < 89)
+        ) doc_group_to_append.insertBefore(card_main, doc_group_to_append.children[5]);
+
+        if (
+            (current_element.number >= 89 && current_element.number <= 103)
+        ) {
+            doc_group_to_append = document.getElementById(`group_${current_element.number - 85}`);
+            doc_group_to_append.appendChild(card_main);
+        };
+
+        if (current_element.number > 103) doc_group_to_append.insertBefore(card_main, doc_group_to_append.children[6]);
 
         // HANDLES COLOR CODING OF PERIODIC TABLE ELEMENTS
         if (current_element.category === 'alkali metal') card_main.classList.add('light_blue');

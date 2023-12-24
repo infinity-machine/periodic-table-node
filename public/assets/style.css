@@ -52,6 +52,10 @@ main {
     font-size: .75em;
 }
 
+.margin-top{
+    margin-top: 1.5em;
+}
+
 @media screen and (max-width: 1570px){
     .element_body>h1{
         font-size:3.5vw;
