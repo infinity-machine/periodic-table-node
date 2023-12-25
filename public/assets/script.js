@@ -56,8 +56,7 @@ function renderTable(element_data) {
         ) appendDummyCards(doc_group_to_append, 1);
 
         if (
-            current_element.number === 21
-            || (current_element.number >= 22 && current_element.number <= 30)
+            current_element.number >= 21 && current_element.number <= 30
         ) appendDummyCards(doc_group_to_append, 3);
 
         if (
@@ -65,7 +64,7 @@ function renderTable(element_data) {
         ) doc_group_to_append.appendChild(card_main);
 
         if (
-            (current_element.number >= 57 && current_element.number <= 71)
+            current_element.number >= 57 && current_element.number <= 71
         ) {
             doc_group_to_append = document.getElementById(`group_${current_element.number - 53}`);
             card_main.classList.add('margin-top');
