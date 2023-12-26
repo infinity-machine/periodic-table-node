@@ -1,5 +1,4 @@
 const main_element = document.getElementById('main');
-
 function handleExpandedView(e) {
     console.log(e.target);
 };
@@ -46,8 +45,8 @@ function renderTable(element_data) {
             || i > 102
         ) {
             card_main.classList.add(
-                `row-${current_element.pt_period}`, 
-                `col-${current_element.pt_group}`
+                `row-${current_element.period}`, 
+                `col-${current_element.group}`
             );
         };
 
@@ -102,8 +101,9 @@ function renderTable(element_data) {
 
 async function fetchElementData() {
     const response = await fetch('/elements');
+    console.log(response.json())
     const element_data = await response.json();
-    return element_data;
+    return element_data.elements;
 };
 
 fetchElementData().then((data) => renderTable(data));
