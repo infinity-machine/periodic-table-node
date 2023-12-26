@@ -1,4 +1,5 @@
 const main_element = document.getElementById('main');
+const expanded_element = document.getElementById('expanded')
 
 async function fetchElementData(atomic_number) {
     const response = await fetch(`/element/${atomic_number}`);
@@ -10,6 +11,7 @@ async function handleExpandedView(e) {
     const atomic_number = e.currentTarget.children[0].children[0].innerText
     const element_data = await fetchElementData(atomic_number);
     console.log(element_data);
+    expanded_element.innerText = element_data.name
 };
 
 function renderTable(element_data) {
