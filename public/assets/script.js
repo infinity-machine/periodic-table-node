@@ -1,7 +1,15 @@
 const main_element = document.getElementById('main');
 
-function handleExpandedView(e) {
-    console.log(e.target);
+async function fetchElementData(atomic_number) {
+    const response = await fetch(`/element/${atomic_number}`);
+    const element_data = await response.json();
+    return element_data;
+}
+
+async function handleExpandedView(e) {
+    const atomic_number = e.currentTarget.children[0].children[0].innerText
+    const element_data = await fetchElementData(atomic_number);
+    console.log(element_data);
 };
 
 function renderTable(element_data) {
@@ -29,17 +37,17 @@ function renderTable(element_data) {
         element_symbol.innerText = current_element.symbol;
         element_name.innerText = current_element.name;
 
-        card_header.appendChild(element_number);
-        card_header.appendChild(element_mass);
+        card_header.append(element_number);
+        card_header.append(element_mass);
 
-        card_body.appendChild(element_symbol);
-        card_body.appendChild(element_name);
+        card_body.append(element_symbol);
+        card_body.append(element_name);
 
-        card_main.appendChild(card_header);
-        card_main.appendChild(card_body);
-        card_main.addEventListener('click', handleExpandedView)
+        card_main.append(card_header);
+        card_main.append(card_body);
+        card_main.addEventListener('click', handleExpandedView);
 
-        // HANDLES PLACEMENT OF ELEMENTS ON PERIODIC TABLE
+        // HANDLES PLACEMENT OF CARDS ON PERIODIC TABLE
         if (
             i < 57
             || (i > 70 && i < 89)
@@ -66,9 +74,9 @@ function renderTable(element_data) {
             );
         };
 
-        main_element.appendChild(card_main);
+        main_element.append(card_main);
 
-        // HANDLES COLOR CODING OF PERIODIC TABLE ELEMENTS
+        // HANDLES CATEGORY SPECIFIC STYLING OF ELEMENT CARDS
         if (
             current_element.category === 'alkali metal'
         ) card_main.classList.add('alkali');
@@ -100,10 +108,10 @@ function renderTable(element_data) {
     };
 };
 
-async function fetchElementData() {
+async function fetchTableData() {
     const response = await fetch('/elements');
     const element_data = await response.json();
     return element_data;
 };
 
-fetchElementData().then((data) => renderTable(data));
+fetchTableData().then((data) => renderTable(data));

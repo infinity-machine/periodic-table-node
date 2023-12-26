@@ -6,9 +6,18 @@ function queryElements() {
             if (error) return reject(error);
             resolve(data);
         });
-    })
+    });
+};
+
+function searchElement(pt_number) {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT * FROM elements WHERE number = ${pt_number}`, (error, data) => {
+            if (error) return reject(error);
+            resolve(data);
+        });
+    });
 };
 
 module.exports = {
-    queryElements
-}
+    queryElements, searchElement
+};
