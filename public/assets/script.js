@@ -1,13 +1,5 @@
 const main_element = document.getElementById('main');
 
-function appendDummyCards(element, quantity) {
-    for (let i = 0; i < quantity; i++) {
-        const dummy_card = document.createElement('div');
-        dummy_card.classList.add('dummy_card');
-        element.appendChild(dummy_card);
-    };
-};
-
 function handleExpandedView(e) {
     console.log(e.target);
 };
@@ -59,8 +51,7 @@ function renderTable(element_data) {
             );
         };
 
-        if (i >= 57 && i <= 70
-        ) {
+        if (i >= 57 && i <= 70) {
             card_main.classList.add(
                 `row-${8}`,
                 `col-${i - 52}`
@@ -68,8 +59,7 @@ function renderTable(element_data) {
             card_main.style.marginTop='2em';
         };
 
-        if (i >= 89 && i <= 102
-        ) {
+        if (i >= 89 && i <= 102) {
             card_main.classList.add(
                 `row-${9}`,
                 `col-${i - 84}`
@@ -79,17 +69,34 @@ function renderTable(element_data) {
         main_element.appendChild(card_main);
 
         // HANDLES COLOR CODING OF PERIODIC TABLE ELEMENTS
-        if (current_element.category === 'alkali metal') card_main.classList.add('alkali');
-        if (current_element.category === 'alkaline earth metal') card_main.classList.add('alkaline-earth');
-        if (current_element.category.includes('transition metal')) card_main.classList.add('trans-metal');
-        if (current_element.category === 'post-transition metal') card_main.classList.add('pt-metal');
-        if (current_element.category === 'metalloid') card_main.classList.add('metalloid');
-        if (current_element.category === 'diatomic nonmetal' || current_element.category === 'polyatomic nonmetal') {
-            card_main.classList.add('da-nonmetal');
-        }
-        if (current_element.category === 'noble gas') card_main.classList.add('noble-gas');
-        if (current_element.category === 'lanthanide') card_main.classList.add('lanthanide');
-        if (current_element.category === 'actinide') card_main.classList.add('actinide');
+        if (
+            current_element.category === 'alkali metal'
+        ) card_main.classList.add('alkali');
+        if (
+            current_element.category === 'alkaline earth metal'
+        ) card_main.classList.add('alkaline-earth');
+        if (
+            current_element.category.includes('transition metal')
+        ) card_main.classList.add('trans-metal');
+        if (
+            current_element.category === 'post-transition metal'
+        ) card_main.classList.add('pt-metal');
+        if (
+            current_element.category === 'metalloid'
+        ) card_main.classList.add('metalloid');
+        if (
+            current_element.category === 'diatomic nonmetal' 
+            || current_element.category === 'polyatomic nonmetal'
+        ) card_main.classList.add('da-nonmetal');
+        if (
+            current_element.category === 'noble gas'
+        ) card_main.classList.add('noble-gas');
+        if (
+            current_element.category === 'lanthanide'
+        ) card_main.classList.add('lanthanide');
+        if (
+            current_element.category === 'actinide'
+        ) card_main.classList.add('actinide');
     };
 };
 
