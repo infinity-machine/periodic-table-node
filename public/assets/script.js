@@ -48,41 +48,34 @@ function renderTable(element_data) {
         card_main.addEventListener('click', handleExpandedView)
 
         // HANDLES PLACEMENT OF ELEMENTS ON PERIODIC TABLE
-        let doc_group_to_append = document.getElementById(`group_${current_element.pt_group}`);
-
         if (
-            current_element.number === 4
-            || (current_element.number >= 5 && current_element.number <= 9)
-        ) appendDummyCards(doc_group_to_append, 1);
-
-        if (
-            current_element.number >= 21 && current_element.number <= 30
-        ) appendDummyCards(doc_group_to_append, 3);
-
-        if (
-            current_element.number < 57
-        ) doc_group_to_append.appendChild(card_main);
-
-        if (
-            current_element.number >= 57 && current_element.number <= 71
+            i < 56
+            || (i > 70 && i < 88)
+            || i > 102
         ) {
-            doc_group_to_append = document.getElementById(`group_${current_element.number - 53}`);
-            card_main.classList.add('margin-top');
-            doc_group_to_append.appendChild(card_main);
-        };
+            card_main.classList.add(`row-${current_element.pt_period}`);
+            card_main.classList.add(`col-${current_element.pt_group}`);
+            console.log(`${i+1}: ${current_element.name}: column ${current_element.pt_group} row ${current_element.pt_period}`)
+            main_element.appendChild(card_main)
+        }
 
-        if (
-            (current_element.number > 71 && current_element.number < 89)
-        ) doc_group_to_append.insertBefore(card_main, doc_group_to_append.children[5]);
 
-        if (
-            (current_element.number >= 89 && current_element.number <= 103)
+        if (i >= 56 && i <= 70
         ) {
-            doc_group_to_append = document.getElementById(`group_${current_element.number - 85}`);
-            doc_group_to_append.appendChild(card_main);
-        };
+            card_main.classList.add(`row-${8}`);
+            card_main.classList.add(`col-${i - 52}`)
+        }
 
-        if (current_element.number > 103) doc_group_to_append.insertBefore(card_main, doc_group_to_append.children[6]);
+        if (i >= 88 && i <= 102
+        ) {
+            card_main.classList.add(`row-${9}`);
+            card_main.classList.add(`col-${i - 84}`)
+        }
+
+
+        // card_main.classList.add(`row-${current_element.pt_period}`);
+        // card_main.classList.add(`col-${current_element.pt_group}`);
+        main_element.appendChild(card_main)
 
         // HANDLES COLOR CODING OF PERIODIC TABLE ELEMENTS
         if (current_element.category === 'alkali metal') card_main.classList.add('light_blue');
