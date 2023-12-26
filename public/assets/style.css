@@ -1,20 +1,13 @@
-main {
+#container{
+    max-width: 1700px;
+    margin: auto;
+}
+
+#main {
     display: grid;
     grid-template-columns: repeat(18, 1fr);
-}
-
-.column {
-    width: 95%;
-    max-width: 5em;
-}
-
-.dummy_card {
-    border: 1px solid white;
-    position: relative;
-    width: 100%;
-    height: 6vw;
-    max-height: 5em;
-    margin-bottom: .1em;
+    grid-template-rows: 9;
+    grid-gap: .3em;
 }
 
 .element_main {
@@ -22,8 +15,8 @@ main {
     position: relative;
     width: 100%;
     height: 6vw;
-    max-height: 5em;
-    margin-bottom: .1em;
+    max-height: 5.5em;
+    max-width: 5.5em;
 }
 
 .element_header {
@@ -70,43 +63,50 @@ main {
     }
 }
 
+@media screen and (max-width: 900px){
 
-.light_blue{
+    .element_body>h2{
+        display: none
+    }
+
+    .element_header{
+        display: none
+    }
+}
+
+
+.alkali {
     background-color: rgb(138, 205, 228)
 }
 
-.light_red {
+.alkaline-earth {
     background-color: rgb(243, 136, 136)
 }
 
-.off_white {
+.trans-metal {
     background-color: rgb(208, 205, 205);
 }
 
-.light_purple {
+.pt-metal {
     background-color: rgb(209, 183, 209);
 }
 
-.lighter_purple {
+.metalloid {
     background-color: rgb(255, 233, 255)
 }
 
-.light_yellow {
-    background-color: rgb(240, 240, 170)
-}
-
-.light_green {
+.da-nonmetal {
     background-color: rgb(100, 202, 100)
 }
 
-.darker_blue {
+.noble-gas {
     background-color: rgb(124, 124, 247)
 }
 
-.lighter_green {
+.lanthanide {
     background-color: rgb(178, 252, 178);
 }
 
-.light_orange {
+.actinide {
     background-color: rgb(236, 192, 110);
 }

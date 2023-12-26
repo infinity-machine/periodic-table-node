@@ -1,13 +1,5 @@
 const main_element = document.getElementById('main');
 
-function appendDummyCards(element, quantity) {
-    for (let i = 0; i < quantity; i++) {
-        const dummy_card = document.createElement('div');
-        dummy_card.classList.add('dummy_card');
-        element.appendChild(dummy_card);
-    };
-};
-
 function handleExpandedView(e) {
     console.log(e.target);
 };
@@ -48,54 +40,63 @@ function renderTable(element_data) {
         card_main.addEventListener('click', handleExpandedView)
 
         // HANDLES PLACEMENT OF ELEMENTS ON PERIODIC TABLE
-        let doc_group_to_append = document.getElementById(`group_${current_element.pt_group}`);
-
         if (
-            current_element.number === 4
-            || (current_element.number >= 5 && current_element.number <= 9)
-        ) appendDummyCards(doc_group_to_append, 1);
-
-        if (
-            current_element.number >= 21 && current_element.number <= 30
-        ) appendDummyCards(doc_group_to_append, 3);
-
-        if (
-            current_element.number < 57
-        ) doc_group_to_append.appendChild(card_main);
-
-        if (
-            current_element.number >= 57 && current_element.number <= 71
+            i < 57
+            || (i > 70 && i < 89)
+            || i > 102
         ) {
-            doc_group_to_append = document.getElementById(`group_${current_element.number - 53}`);
-            card_main.classList.add('margin-top');
-            doc_group_to_append.appendChild(card_main);
+            card_main.classList.add(
+                `row-${current_element.pt_period}`, 
+                `col-${current_element.pt_group}`
+            );
         };
 
-        if (
-            (current_element.number > 71 && current_element.number < 89)
-        ) doc_group_to_append.insertBefore(card_main, doc_group_to_append.children[5]);
-
-        if (
-            (current_element.number >= 89 && current_element.number <= 103)
-        ) {
-            doc_group_to_append = document.getElementById(`group_${current_element.number - 85}`);
-            doc_group_to_append.appendChild(card_main);
+        if (i >= 57 && i <= 70) {
+            card_main.classList.add(
+                `row-${8}`,
+                `col-${i - 52}`
+            );
+            card_main.style.marginTop='2em';
         };
 
-        if (current_element.number > 103) doc_group_to_append.insertBefore(card_main, doc_group_to_append.children[6]);
+        if (i >= 89 && i <= 102) {
+            card_main.classList.add(
+                `row-${9}`,
+                `col-${i - 84}`
+            );
+        };
+
+        main_element.appendChild(card_main);
 
         // HANDLES COLOR CODING OF PERIODIC TABLE ELEMENTS
-        if (current_element.category === 'alkali metal') card_main.classList.add('light_blue');
-        if (current_element.category === 'alkaline earth metal') card_main.classList.add('light_red');
-        if (current_element.category.includes('transition metal')) card_main.classList.add('light_purple');
-        if (current_element.category === 'post-transition metal') card_main.classList.add('lighter_purple');
-        if (current_element.category === 'metalloid') card_main.classList.add('light_yellow');
-        if (current_element.category === 'diatomic nonmetal' || current_element.category === 'polyatomic nonmetal') {
-            card_main.classList.add('light_green');
-        }
-        if (current_element.category === 'noble gas') card_main.classList.add('darker_blue');
-        if (current_element.category === 'lanthanide') card_main.classList.add('lighter_green');
-        if (current_element.category === 'actinide') card_main.classList.add('light_orange');
+        if (
+            current_element.category === 'alkali metal'
+        ) card_main.classList.add('alkali');
+        if (
+            current_element.category === 'alkaline earth metal'
+        ) card_main.classList.add('alkaline-earth');
+        if (
+            current_element.category.includes('transition metal')
+        ) card_main.classList.add('trans-metal');
+        if (
+            current_element.category === 'post-transition metal'
+        ) card_main.classList.add('pt-metal');
+        if (
+            current_element.category === 'metalloid'
+        ) card_main.classList.add('metalloid');
+        if (
+            current_element.category === 'diatomic nonmetal' 
+            || current_element.category === 'polyatomic nonmetal'
+        ) card_main.classList.add('da-nonmetal');
+        if (
+            current_element.category === 'noble gas'
+        ) card_main.classList.add('noble-gas');
+        if (
+            current_element.category === 'lanthanide'
+        ) card_main.classList.add('lanthanide');
+        if (
+            current_element.category === 'actinide'
+        ) card_main.classList.add('actinide');
     };
 };
 
