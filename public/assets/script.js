@@ -1,17 +1,13 @@
 const main_element = document.getElementById('main');
-const expanded_element = document.getElementById('expanded')
-
-async function fetchElementData(atomic_number) {
-    const response = await fetch(`/element/${atomic_number}`);
-    const element_data = await response.json();
-    return element_data;
-}
+const expanded_title = document.getElementById('expanded_title');
+const expanded_summary = document.getElementById('expanded_summary');
+const element_img = document.getElementById('element_img');
 
 async function handleExpandedView(e) {
-    const atomic_number = e.currentTarget.children[0].children[0].innerText
-    const element_data = await fetchElementData(atomic_number);
-    console.log(element_data);
-    expanded_element.innerText = element_data.name
+    const clicked_element_data = e.currentTarget.dataset;
+    expanded_title.innerText = clicked_element_data.name;
+    expanded_summary.innerText = clicked_element_data.summary;
+    element_img.setAttribute('src', `${clicked_element_data.bohr_model_image}`);
 };
 
 function renderTable(element_data) {
@@ -38,6 +34,15 @@ function renderTable(element_data) {
         element_mass.innerText = `${current_element.atomic_mass}`;
         element_symbol.innerText = current_element.symbol;
         element_name.innerText = current_element.name;
+
+        const data_keys = Object.keys(current_element);
+        const data_values = Object.values(current_element);
+
+        for(let i = 0; i < data_keys.length; i++){
+            card_main.setAttribute(
+                `data-${data_keys[i]}`, `${data_values[i]}`
+            );
+        };
 
         card_header.append(element_number);
         card_header.append(element_mass);

@@ -11,8 +11,28 @@
 }
 
 #expanded {
-    grid-row: 1 / 3;
-    grid-column: 3 / 12;
+    grid-row: 1 / span 3;
+    grid-column: 3 / span 10;
+    /* width: 100%; */
+    /* display: flex; */
+    height: 18.9vw;
+    border: solid 1px black;
+    margin: 0;
+    overflow: scroll;
+}
+
+#expanded_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#expanded_body{
+    margin: 0;
+}
+
+#element_img {
+    margin-top: -2em;
+    margin-bottom: -2em;
 }
 
 .element_main {
