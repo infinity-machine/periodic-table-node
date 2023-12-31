@@ -1,13 +1,15 @@
 const main_element = document.getElementById('main');
-const expanded_title = document.getElementById('expanded_title');
-const expanded_summary = document.getElementById('expanded_summary');
-const element_img = document.getElementById('element_img');
+const expanded_title = document.getElementById('expanded-title');
+const exp_discovered_by = document.getElementById('exp-discovered_by');
+const expanded_summary = document.getElementById('expanded-summary');
+const element_img = document.getElementById('element-img');
 
 async function handleExpandedView(e) {
-    const clicked_element_data = e.currentTarget.dataset;
-    expanded_title.innerText = clicked_element_data.name;
-    expanded_summary.innerText = clicked_element_data.summary;
-    element_img.setAttribute('src', `${clicked_element_data.bohr_model_image}`);
+    // const clicked_element_data = e.currentTarget.dataset;
+    // expanded_title.innerText = clicked_element_data.name;
+    // exp_discovered_by.innerText = `Discovered by: ${clicked_element_data.discovered_by}`
+    // expanded_summary.innerText = clicked_element_data.summary;
+    // element_img.setAttribute('src', `${clicked_element_data.bohr_model_image}`);
 };
 
 function renderTable(element_data) {
@@ -16,14 +18,15 @@ function renderTable(element_data) {
 
         // HANDLES GENERATION OF CARDS FOR EACH ELEMENT
         const current_element = element_data[i];
+        if(current_element.summary.length > 587) console.log(current_element.name)
 
         const card_main = document.createElement('div');
         const card_header = document.createElement('div');
         const card_body = document.createElement('div');
 
-        card_main.classList.add('element_main');
-        card_header.classList.add('element_header');
-        card_body.classList.add('element_body');
+        card_main.classList.add('element-main');
+        card_header.classList.add('element-header');
+        card_body.classList.add('element-body');
 
         const element_number = document.createElement('p');
         const element_mass = document.createElement('p');
