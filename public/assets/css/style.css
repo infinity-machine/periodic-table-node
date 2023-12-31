@@ -27,41 +27,48 @@
     font-size: 1.5em;
 }
 
+#legend-alkali {
+    color: rgb(138, 205, 228)
+}
+
+#legend-alkaline-earth {
+    color: rgb(243, 136, 136)
+}
+
+#legend-trans-metal {
+    color: rgb(164, 181, 188);
+}
+
+#legend-pt-metal {
+    color: rgb(209, 183, 209);
+}
+
+#legend-metalloid {
+    color: rgb(240, 128, 171)
+}
+
+#legend-da-nonmetal {
+    color: rgb(100, 202, 100)
+}
+
+#legend-noble-gas {
+    color: rgb(124, 124, 247)
+}
+
+#legend-lanthanide {
+    color: rgb(181, 244, 170);
+}
+
+#legend-actinide {
+    color: rgb(236, 192, 110);
+}
+
 #legend-example {
     grid-column: 2 / span 2;
 
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#expanded_header {
-    display: flex;
-    justify-content: space-between;
-}
-
-#exp_discovered_by {
-    font-size: .75em;
-    margin-top: -1.25em;
-}
-
-#expanded-body {
-    margin-top: -1.25em;
-}
-
-#expanded-summary {
-    /* overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    display: block;
-    line-height: 1em;
-    /* a */
-    max-height: 18.9vw; 
-}
-
-#element-img {
-    margin-top: -2em;
-    margin-bottom: -2em;
 }
 
 .element-main {
@@ -141,7 +148,7 @@
 }
 
 .trans-metal {
-    background-color: rgb(208, 205, 205);
+    background-color: rgb(164, 181, 188);
 }
 
 .pt-metal {
@@ -149,7 +156,7 @@
 }
 
 .metalloid {
-    background-color: rgb(255, 233, 255)
+    background-color: rgb(240, 128, 171)
 }
 
 .da-nonmetal {
@@ -161,7 +168,7 @@
 }
 
 .lanthanide {
-    background-color: rgb(178, 252, 178);
+    background-color: rgb(181, 244, 170);
 }
 
 .actinide {
