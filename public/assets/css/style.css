@@ -12,11 +12,9 @@
 
 #legend {
     grid-template-columns: 3;
-    
     display: grid;
     grid-row: 1 / span 3;
     grid-column: 3 / span 10;
-    border: 1px solid black;
     margin: .3em;
     padding: .3em;
 }
@@ -44,7 +42,7 @@
 }
 
 #legend-metalloid {
-    color: rgb(240, 128, 171)
+    color: rgb(240, 128, 171);
 }
 
 #legend-da-nonmetal {
@@ -69,6 +67,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#example-main {
+    height: 100% !important;
+    max-height: none !important;
+    width: 70% !important;
+    max-width: none !important;
 }
 
 .element-main {
@@ -173,4 +178,9 @@
 
 .actinide {
     background-color: rgb(236, 192, 110);
+}
+
+
+.opaque {
+    opacity: 10%;
 }
