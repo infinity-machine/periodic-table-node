@@ -14,6 +14,7 @@ function toggleExpandedView(){
     }
 }
 
+// MAIN FUNCTION FOR RENDERING THE PERIODIC TABLE... THIS IS WHERE THE MAGIC HAPPENS BOI!
 function renderTable(element_data) {
     for (let i = 0; i < element_data.length; i++) {
         if (i === 118) return;
@@ -37,8 +38,9 @@ function renderTable(element_data) {
         element_number.innerText = `${current_element.number}`
         element_mass.innerText = `${current_element.atomic_mass}`;
         element_symbol.innerText = current_element.symbol;
-        element_name.innerText = current_element.name;
+        element_name.innerText = current_element.name; 
 
+        // STORES ALL ELEMENT DATA WITHIN DATASET OF HTML ELEMENT
         const data_keys = Object.keys(current_element);
         const data_values = Object.values(current_element);
 
@@ -56,21 +58,28 @@ function renderTable(element_data) {
 
         card_main.append(card_header);
         card_main.append(card_body);
+
+        // CLICK LISTENER ON EACH ELEMENT TO HANDLE EXPANDED VIEW
         card_main.addEventListener('click', () => {
             if (!legend_element.classList.contains('hide')) toggleExpandedView();
+
             expanded_view_element.innerHTML = '';
+
+            const summary = document.createElement('p');
+            const exit_button = document.createElement('button');
+
+            summary.innerText = current_element.summary;
+            exit_button.innerText = 'EXIT'
+
+            exit_button.addEventListener('click', toggleExpandedView);
+
             expanded_view_element.append(element_name.cloneNode(true));
             expanded_view_element.append(element_mass.cloneNode(true));
-            const summary = document.createElement('p');
-            summary.innerText = current_element.summary;
             expanded_view_element.append(summary);
-            const exit_button = document.createElement('button');
-            exit_button.innerText = 'EXIT'
-            exit_button.addEventListener('click', toggleExpandedView);
             expanded_view_element.append(exit_button);
         })
 
-        // HANDLES PLACEMENT OF CARDS ON PERIODIC TABLE
+        // HANDLES PLACEMENT OF CARDS ON PERIODIC TABLE USING GRID CLASSES
         if (
             i < 57
             || (i > 70 && i < 89)
