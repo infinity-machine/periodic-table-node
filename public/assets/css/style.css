@@ -21,7 +21,6 @@
 
 #legend-keys {
     grid-column: 1;
-
     font-size: 1.5em;
 }
 
@@ -74,6 +73,20 @@
     max-height: none !important;
     width: 70% !important;
     max-width: none !important;
+}
+
+#example-header {
+    font-size: 2em;
+}
+
+#example-body>h1 {
+
+    font-size: 6em;
+}
+
+#example-body>h2 {
+
+    font-size: 2em;
 }
 
 .element-main {
