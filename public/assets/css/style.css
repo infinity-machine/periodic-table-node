@@ -139,6 +139,22 @@
     grid-column: 3 / span 10;
     margin: .3em;
     padding: .3em;
+    height: 20vw;
+    overflow: scroll;
+}
+
+#expanded-view-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#expanded-view-body {
+    /* overflow: scroll; */
+}
+
+.bohr-img {
+   margin-top: -30%;
+
 }
 
 @media screen and (max-width: 1465px) {

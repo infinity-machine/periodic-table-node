@@ -1,15 +1,17 @@
 const main_element = document.getElementById('main');
 const legend_element = document.getElementById('legend');
-const expanded_view_element = document.getElementById('expanded-view')
+const exp_view_element = document.getElementById('expanded-view');
+const exp_view_header_element = document.getElementById('expanded-view-header');
+const exp_view_body_element = document.getElementById('expanded-view-body');
 
-function toggleExpandedView(){
+function toggleExpandedView() {
     if (!legend_element.classList.contains('hide')) {
         legend_element.classList.add('hide');
-        expanded_view_element.classList.remove('hide');
+        exp_view_element.classList.remove('hide');
         return
     }
-    if (!expanded_view_element.classList.contains('hide')) {
-        expanded_view_element.classList.add('hide');
+    if (!exp_view_element.classList.contains('hide')) {
+        exp_view_element.classList.add('hide');
         legend_element.classList.remove('hide');
     }
 }
@@ -38,7 +40,7 @@ function renderTable(element_data) {
         element_number.innerText = `${current_element.number}`
         element_mass.innerText = `${current_element.atomic_mass}`;
         element_symbol.innerText = current_element.symbol;
-        element_name.innerText = current_element.name; 
+        element_name.innerText = current_element.name;
 
         // STORES ALL ELEMENT DATA WITHIN DATASET OF HTML ELEMENT
         const data_keys = Object.keys(current_element);
@@ -63,20 +65,48 @@ function renderTable(element_data) {
         card_main.addEventListener('click', () => {
             if (!legend_element.classList.contains('hide')) toggleExpandedView();
 
-            expanded_view_element.innerHTML = '';
+            exp_view_element.innerHTML = '';
 
-            const summary = document.createElement('p');
-            const exit_button = document.createElement('button');
+            const summary_element = document.createElement('p');  
+            const exit_button_element = document.createElement('button');
+            const bohr_img_element = document.createElement('img');
 
-            summary.innerText = current_element.summary;
-            exit_button.innerText = 'EXIT'
+            const exp_view_header_element = document.createElement('section');
+            const ev_header_txt_container_element = document.createElement('div');
+            const exp_view_body_element = document.createElement('section');
+            const ev_img_container_element = document.createElement('div');
 
-            exit_button.addEventListener('click', toggleExpandedView);
+            summary_element.innerText = current_element.summary;
+            exp_view_header_element.setAttribute('id', 'expanded-view-header'); 
+            exp_view_body_element.setAttribute('id', 'expanded-view-body');
+            bohr_img_element.src = current_element.bohr_model_image;
+            bohr_img_element.classList.add('bohr-img')
 
-            expanded_view_element.append(element_name.cloneNode(true));
-            expanded_view_element.append(element_mass.cloneNode(true));
-            expanded_view_element.append(summary);
-            expanded_view_element.append(exit_button);
+            exit_button_element.innerText = 'EXIT'
+            exit_button_element.addEventListener('click', toggleExpandedView);
+
+            ev_header_txt_container_element.append(
+                element_name.cloneNode(true),
+                element_mass.cloneNode(true)
+            );
+
+            ev_img_container_element.append(bohr_img_element);
+       
+            exp_view_header_element.append(
+                ev_header_txt_container_element,
+                ev_img_container_element
+            );
+        
+
+            exp_view_body_element.append(
+                summary_element,
+                exit_button_element
+            );
+
+            exp_view_element.append(
+                exp_view_header_element,
+                exp_view_body_element
+            );
         })
 
         // HANDLES PLACEMENT OF CARDS ON PERIODIC TABLE USING GRID CLASSES
