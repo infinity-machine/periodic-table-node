@@ -128,6 +128,19 @@
     margin-top: 1.5em;
 }
 
+.hide {
+    display: none !important;
+}
+
+#expanded-view {
+    grid-template-columns: 3;
+    display: grid;
+    grid-row: 1 / span 3;
+    grid-column: 3 / span 10;
+    margin: .3em;
+    padding: .3em;
+}
+
 @media screen and (max-width: 1465px) {
     #legend-keys {
         font-size: 1.68vw;

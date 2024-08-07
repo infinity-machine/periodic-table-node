@@ -1,9 +1,22 @@
 const main_element = document.getElementById('main');
-const expanded_title = document.getElementById('expanded-title');
+const legend_element = document.getElementById('legend');
+const expanded_view_element = document.getElementById('expanded-view')
 
-function renderTable(element_data){
-    for(let i = 0; i < element_data.length; i++){
-        if(i === 118) return;
+function toggleExpandedView(){
+    if (!legend_element.classList.contains('hide')) {
+        legend_element.classList.add('hide');
+        expanded_view_element.classList.remove('hide');
+        return
+    }
+    if (!expanded_view_element.classList.contains('hide')) {
+        expanded_view_element.classList.add('hide');
+        legend_element.classList.remove('hide');
+    }
+}
+
+function renderTable(element_data) {
+    for (let i = 0; i < element_data.length; i++) {
+        if (i === 118) return;
 
         // HANDLES GENERATION OF CARDS FOR EACH ELEMENT
         const current_element = element_data[i];
@@ -29,7 +42,7 @@ function renderTable(element_data){
         const data_keys = Object.keys(current_element);
         const data_values = Object.values(current_element);
 
-        for(let i = 0; i < data_keys.length; i++){
+        for (let i = 0; i < data_keys.length; i++) {
             card_main.setAttribute(
                 `data-${data_keys[i]}`, `${data_values[i]}`
             );
@@ -43,28 +56,41 @@ function renderTable(element_data){
 
         card_main.append(card_header);
         card_main.append(card_body);
+        card_main.addEventListener('click', () => {
+            if (!legend_element.classList.contains('hide')) toggleExpandedView();
+            expanded_view_element.innerHTML = '';
+            expanded_view_element.append(element_name.cloneNode(true));
+            expanded_view_element.append(element_mass.cloneNode(true));
+            const summary = document.createElement('p');
+            summary.innerText = current_element.summary;
+            expanded_view_element.append(summary);
+            const exit_button = document.createElement('button');
+            exit_button.innerText = 'EXIT'
+            exit_button.addEventListener('click', toggleExpandedView);
+            expanded_view_element.append(exit_button);
+        })
 
         // HANDLES PLACEMENT OF CARDS ON PERIODIC TABLE
-        if(
+        if (
             i < 57
             || (i > 70 && i < 89)
             || i > 102
-        ){
+        ) {
             card_main.classList.add(
-                `row-${current_element.pt_period}`, 
+                `row-${current_element.pt_period}`,
                 `col-${current_element.pt_group}`
             );
         };
 
-        if(i >= 57 && i <= 70){
+        if (i >= 57 && i <= 70) {
             card_main.classList.add(
                 `row-${8}`,
                 `col-${i - 52}`
             );
-            card_main.style.marginTop='2em';
+            card_main.style.marginTop = '2em';
         };
 
-        if(i >= 89 && i <= 102){
+        if (i >= 89 && i <= 102) {
             card_main.classList.add(
                 `row-${9}`,
                 `col-${i - 84}`
@@ -74,38 +100,38 @@ function renderTable(element_data){
         main_element.append(card_main);
 
         // HANDLES CATEGORY SPECIFIC STYLING OF ELEMENT CARDS
-        if(
+        if (
             current_element.category === 'alkali metal'
         ) card_main.classList.add('alkali');
-        if(
+        if (
             current_element.category === 'alkaline earth metal'
         ) card_main.classList.add('alkaline-earth');
-        if(
+        if (
             current_element.category.includes('transition metal')
         ) card_main.classList.add('trans-metal');
-        if(
+        if (
             current_element.category === 'post-transition metal'
         ) card_main.classList.add('pt-metal');
-        if(
+        if (
             current_element.category === 'metalloid'
         ) card_main.classList.add('metalloid');
-        if(
-            current_element.category === 'diatomic nonmetal' 
+        if (
+            current_element.category === 'diatomic nonmetal'
             || current_element.category === 'polyatomic nonmetal'
         ) card_main.classList.add('da-nonmetal');
-        if(
+        if (
             current_element.category === 'noble gas'
         ) card_main.classList.add('noble-gas');
-        if(
+        if (
             current_element.category === 'lanthanide'
         ) card_main.classList.add('lanthanide');
-        if(
+        if (
             current_element.category === 'actinide'
         ) card_main.classList.add('actinide');
     };
 };
 
-async function fetchTableData(){
+async function fetchTableData() {
     const response = await fetch('/elements');
     const element_data = await response.json();
     return element_data;
