@@ -1,18 +1,16 @@
-const main_element = document.getElementById('main');
-const legend_element = document.getElementById('legend');
-const exp_view_element = document.getElementById('expanded-view');
-const exp_view_header_element = document.getElementById('expanded-view-header');
-const exp_view_body_element = document.getElementById('expanded-view-body');
+const main_el = document.getElementById('main');
+const header_el = document.getElementById('header');
+const exp_view_el = document.getElementById('expanded-view');
 
 function toggleExpandedView() {
-    if (!legend_element.classList.contains('hide')) {
-        legend_element.classList.add('hide');
-        exp_view_element.classList.remove('hide');
+    if (!header_el.classList.contains('hide')) {
+        header_el.classList.add('hide');
+        exp_view_el.classList.remove('hide');
         return
     }
-    if (!exp_view_element.classList.contains('hide')) {
-        exp_view_element.classList.add('hide');
-        legend_element.classList.remove('hide');
+    if (!exp_view_el.classList.contains('hide')) {
+        exp_view_el.classList.add('hide');
+        header_el.classList.remove('hide');
     }
 }
 
@@ -63,49 +61,43 @@ function renderTable(element_data) {
 
         // CLICK LISTENER ON EACH ELEMENT TO HANDLE EXPANDED VIEW
         card_main.addEventListener('click', () => {
-            if (!legend_element.classList.contains('hide')) toggleExpandedView();
+            if (!header_el.classList.contains('hide')) toggleExpandedView();
 
-            exp_view_element.innerHTML = '';
+            exp_view_el.innerHTML = '';
 
-            const summary_element = document.createElement('p');  
-            const exit_button_element = document.createElement('button');
-            const bohr_img_element = document.createElement('img');
+            const summary_el = document.createElement('p');
+            const exit_btn_el = document.createElement('button');
 
-            const exp_view_header_element = document.createElement('section');
-            const ev_header_txt_container_element = document.createElement('div');
-            const exp_view_body_element = document.createElement('section');
-            const ev_img_container_element = document.createElement('div');
 
-            summary_element.innerText = current_element.summary;
-            exp_view_header_element.setAttribute('id', 'expanded-view-header'); 
-            exp_view_body_element.setAttribute('id', 'expanded-view-body');
-            bohr_img_element.src = current_element.bohr_model_image;
-            bohr_img_element.classList.add('bohr-img')
 
-            exit_button_element.innerText = 'EXIT'
-            exit_button_element.addEventListener('click', toggleExpandedView);
 
-            ev_header_txt_container_element.append(
-                element_name.cloneNode(true),
-                element_mass.cloneNode(true)
+
+            const exp_header_el = document.createElement('section');
+
+
+            const exp_header_txtcontainer_el = document.createElement('div');
+            const exp_body_el = document.createElement('section');
+
+            summary_el.innerText = current_element.summary;
+            exp_header_el.setAttribute('id', 'expanded-view-header');
+            exp_body_el.setAttribute('id', 'expanded-view-body');
+
+            exit_btn_el.innerText = 'EXIT'
+            exit_btn_el.addEventListener('click', toggleExpandedView);
+
+            exp_header_el.append(
+                exp_header_txtcontainer_el
             );
 
-            ev_img_container_element.append(bohr_img_element);
-       
-            exp_view_header_element.append(
-                ev_header_txt_container_element,
-                ev_img_container_element
-            );
-        
 
-            exp_view_body_element.append(
-                summary_element,
-                exit_button_element
+            exp_body_el.append(
+                summary_el,
+                exit_btn_el
             );
 
-            exp_view_element.append(
-                exp_view_header_element,
-                exp_view_body_element
+            exp_view_el.append(
+                exp_header_el,
+                exp_body_el
             );
         })
 
@@ -136,7 +128,7 @@ function renderTable(element_data) {
             );
         };
 
-        main_element.append(card_main);
+        main_el.append(card_main);
 
         // HANDLES CATEGORY SPECIFIC STYLING OF ELEMENT CARDS
         if (

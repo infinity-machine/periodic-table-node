@@ -1,26 +1,98 @@
-#container {
-    max-width: 1700px;
-    margin: auto;
+body {
+    width: 100vw;
+    height: 100vh;
 }
 
 #main {
+    max-width: 1700px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(18, 1fr);
     grid-template-rows: 9;
     grid-gap: .3em;
+    margin: auto;
 }
 
-#legend {
-    grid-template-columns: 3;
+#header {
     display: grid;
+    grid-template-columns: 3;
     grid-row: 1 / span 3;
     grid-column: 3 / span 10;
     margin: .3em;
     padding: .3em;
 }
 
+.element-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* align-items: center; */
+    /* justify-content: center; */
+    height: 6vw;
+    width: auto;
+    aspect-ratio: 1 / 1;
+    /* max-height: 5.5em;
+    max-width: 5.5em; */
+    border: 1px solid black;
+    /* height: 200px;
+    width: 200px; */
+}
+
+.element-header {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -.7rem;
+    font-size: .75rem;
+
+    border: 1px solid red;
+}
+
+.element-header p:first-child {
+    margin-left: .2rem;
+}
+
+.element-header p:nth-child(2) {
+    margin-right: .2rem;
+}
+
+.element-body {
+    height: 60%;
+    border: 1px solid blue;
+}
+
+
+.element-body>h1 {
+    text-align: center;
+}
+
+
+
+
+
+#element-big-container {
+    grid-column: 1
+}
+
+#element-big-main {}
+
+#element-big-header {
+    font-size: 2em;
+}
+
+#element-big-body>h1 {
+
+    font-size: 6em;
+}
+
+#element-big-body>h2 {
+
+    font-size: 2em;
+}
+
 #legend-keys {
-    grid-column: 1;
+    grid-column: 3;
     font-size: 1.5em;
 }
 
@@ -60,33 +132,12 @@
     color: rgb(236, 192, 110);
 }
 
-#legend-example {
-    grid-column: 2 / span 2;
+/* #element-big-container {
+    grid-column: 1 / span 2;
 
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#example-main {
-    height: 100% !important;
-    max-height: none !important;
-    width: 70% !important;
-    max-width: none !important;
-}
-
-#example-header {
-    font-size: 2em;
-}
-
-#example-body>h1 {
-
-    font-size: 6em;
-}
-
-#example-body>h2 {
-
-    font-size: 2em;
 }
 
 .element-main {
@@ -122,11 +173,8 @@
     margin: auto;
     margin-left: .2em;
     font-size: .75em;
-}
+} */
 
-.margin-top {
-    margin-top: 1.5em;
-}
 
 .hide {
     display: none !important;
@@ -148,16 +196,9 @@
     justify-content: space-between;
 }
 
-#expanded-view-body {
-    /* overflow: scroll; */
-}
 
-.bohr-img {
-   margin-top: -30%;
 
-}
-
-@media screen and (max-width: 1465px) {
+/* @media screen and (max-width: 1465px) {
     #legend-keys {
         font-size: 1.68vw;
     }
@@ -183,7 +224,7 @@
     .element-header {
         display: none
     }
-}
+} */
 
 
 .alkali {
